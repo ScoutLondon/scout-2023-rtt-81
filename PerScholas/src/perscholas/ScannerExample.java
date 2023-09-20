@@ -9,6 +9,7 @@ public class ScannerExample {
 		System.out.println("What is your favorite team?");
 		String x = input.nextLine();
 		System.out.println("Go " + x + "!");
+		input.close();
 	}
 	
 }
