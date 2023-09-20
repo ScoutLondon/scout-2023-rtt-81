@@ -1,4 +1,5 @@
 package com.perscholas.java_basics;
+import java.text.DecimalFormat;
 
 public class CoreJavaVariables {
 	
@@ -103,7 +104,10 @@ public class CoreJavaVariables {
 		
 		subtotal = (3*coke)+(4*sprite)+(2*shake);
 		totalSale = subtotal += (subtotal*SALES_TAX);
-		System.out.println(totalSale);
+		DecimalFormat df = new DecimalFormat("$#,##0.00");
+		System.out.println("Subtotal:\t"+df.format(subtotal));
+		System.out.println("Tax:\t\t"+df.format(subtotal*SALES_TAX));
+		System.out.println("Total:\t\t"+df.format(totalSale));
 		
 		
 		
