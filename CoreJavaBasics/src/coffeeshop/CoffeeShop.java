@@ -39,7 +39,9 @@ public class CoffeeShop {
 	public void printProduct(Product product) {
 		// TODO HOMEWORK: Change this print only the product name + tab + price, use a $
 		// in the price and try to align
-		System.out.println("Product name : " + product.getName() + " Price : " + product.getPrice());
+		// ASK: how to justify output text right?
+		DecimalFormat nice = new DecimalFormat("$#,###.00");
+		System.out.println(product.getName() + "\t\t" + nice.format(product.getPrice()));
 	}
 
 	public void printAllProducts() {
@@ -47,22 +49,14 @@ public class CoffeeShop {
 			printProduct(product);
 		}
 	}
-
-	public void example() {
-		double coffee = 5.44d;
-		double tea = 4.33d;
-		double cookie = 6.73d;
-		double subtotal;
-		double totalSale;
-		final double SALES_TAX = 0.07;
-
-		subtotal = (3 * coffee) + (4 * tea) + (2 * cookie);
-		totalSale = subtotal += (subtotal * SALES_TAX);
-		DecimalFormat df = new DecimalFormat("$#,##0.00");
-		System.out.println("Subtotal:\t" + df.format(subtotal));
-		System.out.println("Tax:\t\t" + df.format(subtotal * SALES_TAX));
-		System.out.println("Total:\t\t" + df.format(totalSale));
+	
+	public void printOrder() {
+		for (Product product : order) {
+			System.out.println(product.getName());
+		}
 	}
+
+	
 
 	public int displayMainUserMenu() {
 		System.out.println("1) Print the menu items and prices");
@@ -89,6 +83,22 @@ public class CoffeeShop {
 			}
 		}
 	}
+	
+	public void example() {
+		double coffee = 5.44d;
+		double tea = 4.33d;
+		double cookie = 6.73d;
+		double subtotal;
+		double totalSale;
+		final double SALES_TAX = 0.07;
+
+		subtotal = (3 * coffee) + (4 * tea) + (2 * cookie);
+		totalSale = subtotal += (subtotal * SALES_TAX);
+		DecimalFormat df = new DecimalFormat("$#,##0.00");
+		System.out.println("Subtotal:\t" + df.format(subtotal));
+		System.out.println("Tax:\t\t" + df.format(subtotal * SALES_TAX));
+		System.out.println("Total:\t\t" + df.format(totalSale));
+	}
 
 	public static void main(String[] args) {
 
@@ -100,8 +110,9 @@ public class CoffeeShop {
 				cf.printAllProducts();
 			} else if (userSelection == 2) {
 				cf.userSelectProduct();
-			} 
-			//TODO: HOMEWORK user select 3
+			} else if (userSelection == 3) {
+				cf.printOrder();
+			}
 			else if (userSelection == 5) {
 				System.exit(0);
 			} else {
