@@ -42,6 +42,10 @@ public class ArrayExample {
 		}
 		
 		System.out.println("First null is at "+ firstNull);
+		
+		
+		int notNull = 0;
+		
 	}
 
 }
