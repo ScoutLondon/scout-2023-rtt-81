@@ -22,7 +22,19 @@ public class Calculator {
 		System.out.println("Do you want to + - / or * ?");
 		String math = scan.nextLine();
 		if (math.equals("+")){
-			System.out.println(Calculator.plus(a,b));
+			double x = plus(a,b);
+			System.out.println(x);
+		} else if (math.equals("-")) {
+			double x = minus(a,b);
+			System.out.println(x);
+		} else if (math.equals("/")) {
+			double x = divby(a,b);
+			System.out.println(x);
+		} else if (math.equals("*")) {
+			double x = times(a,b);
+			System.out.println(x);
+		} else {
+			System.out.println("You messed up somewhere, try again");
 		}
 	}
 	
