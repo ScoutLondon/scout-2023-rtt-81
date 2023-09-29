@@ -2,6 +2,7 @@ package perscholas;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class PA303_7_1 {
 	
@@ -99,15 +100,57 @@ public class PA303_7_1 {
 		 * element with the middle element without creating a new array.
 		 */
 		
-		int[] task8 = new int[] {0,1,2,3,4};
+		String[] task8 = new String[] {"red", "blue", "green", "yellow", "pink"};
 		System.out.println(Arrays.toString(task8));
-		int sub0= task8[0];
-		int sub2= task8[2];
+		String sub0= task8[0];
+		String sub2= task8[2];
 		task8[0]=sub2;
 		task8[2]=sub0;
 		System.out.println(Arrays.toString(task8));
 		
 		System.out.println("******************");
+		
+		
+		/*Task 10: Create an array that includes an integer, 3 strings, 
+		 * and 1 double. Print the array.
+		 */
+		
+		Object[] objectArray = new Object[5];
+		objectArray[0] = Integer.valueOf(4);
+		objectArray[1] = "String 1";
+		objectArray[2] = "String 2";
+		objectArray[3] = "String 3";
+		objectArray[4] = 1.0;
+		
+		System.out.println(Arrays.toString(objectArray));
+		System.out.println("*************************");
+
+		
+		
+		
+		/*Task 11: Write some Java code that asks the user how many favorite things 
+		 * they have. Based on their answer, you should create a String array of 
+		 * the correct size. Then ask the user to enter the things and store them 
+		 * in the array you created. Finally, print out the contents of the array.
+		 */
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("How many favorite things?");
+		int numFavorites = scan.nextInt();
+		scan.nextLine();
+		//nextLine is required because nextInt won't advance to next line
+		//subtle but also will wreck code without
+		
+		String[] favorites = new String[numFavorites];
+		
+		for ( int pos = 0; pos < numFavorites; pos++) {
+			System.out.println("Enter favorite thing # "+ pos);
+			favorites[pos] = scan.nextLine();
+		}
+		
+		System.out.println(Arrays.toString(favorites));
+		
 
 	}
 

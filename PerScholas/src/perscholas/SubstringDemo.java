@@ -25,7 +25,7 @@ public class SubstringDemo {
 		System.out.println("First space at: "+firstspace);
 		int lastspace = example.lastIndexOf(" ");
 		System.out.println("Last space at: "+lastspace);
-		System.out.println(example.substring(firstspace, lastspace));
+		System.out.println(example.substring(firstspace+1, lastspace));
 		
 		//do the same thing to find substring of first and last vowel of the string
 		int firstv=example.length();
@@ -61,15 +61,9 @@ public class SubstringDemo {
 	
 		//using only indexOf(" ") print substring containing word "is"
 		//use 2 substrings to do this
-		String full = example;
-		while (!full.isEmpty()) {
-		String word = full.substring(0, full.indexOf(" "));
-		if (word.contains("is")) {
-			System.out.println(word);
-		}
-		full = full.substring(full.indexOf(" "));
-		
-		}
+		String is = example.substring(example.indexOf(" ")+1);
+		is = is.substring(0, is.indexOf(" "));
+		System.out.println(is);
 
 				
 
