@@ -38,7 +38,9 @@ public class Classwork10_2 {
 		}
 		System.out.println("Sum of divisors for 1-100 div by 2: "+ sum3);
 		
-		
+		/*write a while loop ...  while a number is greater than 0 
+		 * subtract 1 from the number starting at 10.
+		 */
 		int x = 10;
 		while (x > 0) {
 			x--;
