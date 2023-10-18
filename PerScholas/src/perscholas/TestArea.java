@@ -2,7 +2,7 @@ package perscholas;
 import java.util.Scanner;
 
 import java.text.NumberFormat;
-
+/*
 public class TestArea {
     //Prompt user to select their calculator 1, 2, or 3
     public static void main(String[] args) {
@@ -65,3 +65,4 @@ public class TestArea {
         System.out.println(future_valueFormatted);
     }
 }
+*/

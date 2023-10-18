@@ -1,7 +1,7 @@
 package perscholas;
 
 import java.util.Scanner;
-
+/*
 
 public class GreatestCommonDivisor {
 	public static void main(String[] args) {
@@ -62,3 +62,4 @@ public class GreatestCommonDivisor {
 	}
 
 }
+*/
