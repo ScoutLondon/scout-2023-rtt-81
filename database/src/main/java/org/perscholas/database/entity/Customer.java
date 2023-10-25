@@ -24,13 +24,7 @@ public class Customer {
             cascade = CascadeType.ALL)
     private List<Order> orders;
 	
-    public List<Order> getOrders() {
-		return orders;
-	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 	
 	@Column(name = "customer_name")
 	private String customerName;
@@ -175,6 +169,14 @@ public class Customer {
 
 	public void setCreditLimit(Double creditLimit) {
 		this.creditLimit = creditLimit;
+	}
+	
+    public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 	
 	
