@@ -50,6 +50,8 @@ public class ProductDAO {
 		//use in the query. You're passing this value as an argument to the 
 		//findByName method.
 		
+		// :name is being used to reference the named parameter. 
+		
 		
 		List<Product> result = query.getResultList();
 		return result;
