@@ -28,11 +28,11 @@ public class OrderDetail {
 	
 
 
-	@Column(name = "order_id", insertable = false, updatable = false)
-	private Integer orderId;
+	//@Column(name = "order_id", insertable = false, updatable = false)
+	//private Integer orderId;
 	
-	@Column(name = "product_id", insertable = false, updatable = false)
-	private Integer productId;
+	//@Column(name = "product_id", insertable = false, updatable = false)
+	//private Integer productId;
 	
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
@@ -53,7 +53,7 @@ public class OrderDetail {
 		this.id = id;
 	}
 
-	public Integer getOrderId() {
+	/*public Integer getOrderId() {
 		return orderId;
 	}
 
@@ -67,7 +67,7 @@ public class OrderDetail {
 
 	public void setProductId(Integer productId) {
 		this.productId = productId;
-	}
+	}*/
 
 	public Integer getQuantityOrdered() {
 		return quantityOrdered;

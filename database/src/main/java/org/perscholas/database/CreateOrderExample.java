@@ -26,19 +26,20 @@ public class CreateOrderExample {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What is the customer ID?");
 		int custId = scan.nextInt();
-		//then query the customer .. 
+		//then query the customer and insert new order
+		//BUT only if customer id exists in database
 		coe.addOrderExample(custId);
 
 	}
 	
-	public void insertOrderExample(int custId) throws ParseException {
+	public void insertOrderExample(Customer c) throws ParseException {
 		Date date=new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date reqDate = df.parse("2023-10-31");
 		
 		Order o = new Order();
 		//DO NOT SET ID, THAT WILL BE SET AUTOMATICALLY
-		o.setCustomerId(custId);
+		o.setCustomer(c);
 		o.setOrderDate(date);
 		o.setShippedDate(null);
 		o.setStatus("In Process");
@@ -54,7 +55,7 @@ public class CreateOrderExample {
 		//make sure that a record with this id exists
 		//that's why the if/else
 		if (c!= null) {
-			insertOrderExample(id);
+			insertOrderExample(c);
 			System.out.println("Order "+ id +" created!");
 		
 		} else {

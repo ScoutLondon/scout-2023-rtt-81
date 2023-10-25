@@ -36,8 +36,8 @@ public class Order {
 	
 	
 
-	@Column(name = "customer_id", insertable = false, updatable = false)
-	private Integer customerId;
+	//@Column(name = "customer_id", insertable = false, updatable = false)
+	//private Integer customerId;
 	
 	
 
@@ -67,13 +67,13 @@ public class Order {
 		this.id = id;
 	}
 
-	public Integer getCustomerId() {
+	/*public Integer getCustomerId() {
 		return customerId;
 	}
 
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
-	}
+	}*/
 
 	public Date getOrderDate() {
 		return orderDate;
