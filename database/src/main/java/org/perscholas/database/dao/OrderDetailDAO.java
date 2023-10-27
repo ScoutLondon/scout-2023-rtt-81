@@ -34,7 +34,7 @@ public OrderDetail findByOrderIdAndProductId(Integer orderId, Integer productId)
 	SessionFactory factory = new Configuration().configure().buildSessionFactory();
 	Session session = factory.openSession();
 	
-	String hql = "FROM OrderDetail od WHERE od.order_id = :orderId AND od.product_id = :productId";
+	String hql = "FROM OrderDetail od WHERE od.order.id = :orderId AND od.product.id = :productId";
 	TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
 	query.setParameter("orderId", orderId);
 	query.setParameter("productId", productId);

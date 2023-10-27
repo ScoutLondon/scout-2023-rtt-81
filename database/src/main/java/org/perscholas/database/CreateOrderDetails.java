@@ -76,7 +76,11 @@ public class CreateOrderDetails {
 		System.out.println("======> should not be null"+ queryOd);
 		if (queryOd != null) {
 			System.out.println("This product is already part of the order!");
-			System.exit(1);
+			//System.exit(1);
+			System.out.println("How many additional would you like to order?");
+			int quantity = scan.nextInt();
+			queryOd.setQuantityOrdered(queryOd.getQuantityOrdered() + quantity);
+			orderDetailDAO.save(queryOd);
 		} else {
 		
 		
