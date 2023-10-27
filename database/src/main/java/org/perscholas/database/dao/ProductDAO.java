@@ -2,6 +2,7 @@ package org.perscholas.database.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -19,10 +20,12 @@ public class ProductDAO {
 		
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
 		query.setParameter("id", id);
-		
+		try {
 		Product result = query.getSingleResult();
 		return result;
-		
+		} catch (NoResultException nre) {
+			return null;
+		}
 	
 	}
 	
@@ -52,10 +55,12 @@ public class ProductDAO {
 		
 		// :name is being used to reference the named parameter. 
 		
-		
+		try {
 		List<Product> result = query.getResultList();
 		return result;
-		
+		} catch (NoResultException nre) {
+			return null;
+		}
 	
 	}
 
