@@ -34,10 +34,10 @@ public class ProductDAO {
 		Session session = factory.openSession();
 		
 		//ISSUE RESOLVED: p.productName as named in entity vs p.product_name
-		String hql = "FROM Product p WHERE p.productName = :name"; // Example of HQL to get all records of product class
+		String hql = "FROM Product p WHERE p.productName like :name"; // Example of HQL to get all records of product class
 		
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
-		query.setParameter("name", name);
+		query.setParameter("name", "%" + name + "%");
 		
 		//setParameter Guide:
 		

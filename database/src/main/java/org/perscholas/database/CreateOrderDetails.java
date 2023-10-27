@@ -46,18 +46,38 @@ public class CreateOrderDetails {
 		//goal is to insert record into order details table
 		
 		Product p = productDAO.findById(productId);
+		if (p == null) {
+			System.out.println("You have entered an invalid product id!");
+			System.exit(1);;
+		}
+		
+		
 		//ask use what order number they want to add product to
-		Order o = orderDAO.findById(10100);
+		System.out.println("Select an order number to add product to:");
+		Integer orderId = scan.nextInt();
+		Order o = orderDAO.findById(orderId);
+		
+		if (o == null) {
+			System.out.println("You have entered an invalid order id!");
+			System.exit(1);
+		}
 		
 		//if product is already part of order don't add it again
 		for (OrderDetail orderDetail : o.getOrderdetails()) {
-			if (orderDetail.getProduct().getId() == productId) {
+			if (p.getId() == orderDetail.getProduct().getId()) {
 				//the product is already part of the order
 				System.out.println("The product "+ p.getProductName() + " is already part of the order, cannot add again.");
-				System.exit(1);
+				//System.exit(1);
 			}
 		}
 		
+		//because it returned not null, we know that this product is already part of order
+		OrderDetail queryOd = orderDetailDAO.findByOrderIdAndProductId(orderId, productId);
+		System.out.println("======> should not be null"+ queryOd);
+		if (queryOd != null) {
+			System.out.println("This product is already part of the order!");
+			System.exit(1);
+		} else {
 		
 		
 		OrderDetail od = new OrderDetail();
@@ -70,7 +90,7 @@ public class CreateOrderDetails {
 		orderDetailDAO.save(od);
 		
 		System.out.println("Successfully added product to order");
-		
+		}
 	}
 	
 	
