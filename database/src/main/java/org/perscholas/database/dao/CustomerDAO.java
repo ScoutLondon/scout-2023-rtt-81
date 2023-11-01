@@ -33,6 +33,13 @@ public class CustomerDAO {
 	
 	}
 	
+	public Customer updateFirstName(Integer id, String firstName) {
+		Customer save = findById(id);
+		
+		save.setContactLastname(firstName);
+		return save(save);
+	}
+	
 	//by contrast, a method that returns list
 	//will ALWAYS return list, never returns null
 	//if no records returns empty list
@@ -50,12 +57,14 @@ public class CustomerDAO {
 		return result;
 	}
 	
-	public void save(Customer save) {
+	public Customer save(Customer save) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		session.saveOrUpdate(save);
 		t.commit();
+		session.close();
+		return save;
 	}
 
 }

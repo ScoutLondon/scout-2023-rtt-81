@@ -11,7 +11,7 @@ public class CalculatorTest {
 	
 	@ParameterizedTest
 	@CsvSource({
-		"5, 5, 10",
+		"5, 5, 15",
 		"10, 10, 20",
 		"5.5, 5.5, 11.0"
 	})
