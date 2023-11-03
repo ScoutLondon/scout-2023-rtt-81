@@ -1,5 +1,6 @@
 package jpa.entitymodels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 //TODO: One to many relationship
 
 
+
 @Entity //Categorizes Student class as an entity
 @Table(name="student") //Identifies which table is referenced
 public class Student {
@@ -23,10 +25,60 @@ public class Student {
 	private String sEmail;
 	@Column(name = "name")
 	private String sName;
-	@Column(name = "pasword")
+	@Column(name = "password")
 	private String sPass;
 	
 	private List<Course> courses;
+
+	
+	public Student() {
+		setsEmail("Bueller@gmail.com");
+		setsName("Ferris Bueller");
+		setsPass("DayOff");
+		setCourses(new ArrayList<Course>());
+	}
+	
+	public Student(String email, String name, String password) {
+		setsEmail(email);
+		setsName(name);
+		setsPass(password);
+		setCourses(new ArrayList<Course>());
+	}
+	
+	//GSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGGSGSGSGSGSGSGSGSGS
+	public String getsEmail() {
+		return sEmail;
+	}
+
+	public void setsEmail(String sEmail) {
+		this.sEmail = sEmail;
+	}
+
+	public String getsName() {
+		return sName;
+	}
+
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+
+	public String getsPass() {
+		return sPass;
+	}
+
+	public void setsPass(String sPass) {
+		this.sPass = sPass;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
+	
 
 }
 /*

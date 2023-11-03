@@ -1,5 +1,7 @@
 package jpa.entitymodels;
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +19,42 @@ public class Course {
 	private String cName;
 	@Column(name = "instructor")
 	private String cInstructorName;
+	
+	
+	public Course() {
+		setcId(1986);
+		setcName("Economics");
+		setcInstructorName("Ben Stein");
+	}
+	
+	public Course(int id, String name, String instructor) {
+		setcId(id);
+		setcName(name);
+		setcInstructorName(instructor);
+	}
+	
+	//GSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSG
+	public int getcId() {
+		return cId;
+	}
+	public void setcId(int cId) {
+		this.cId = cId;
+	}
+	public String getcName() {
+		return cName;
+	}
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+	public String getcInstructorName() {
+		return cInstructorName;
+	}
+	public void setcInstructorName(String cInstructorName) {
+		this.cInstructorName = cInstructorName;
+	}
+	
+	
+	
 
 }
 /*
