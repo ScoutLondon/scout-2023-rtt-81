@@ -1,12 +1,16 @@
 package jpa.entitymodels;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-//TODO: One to many relationship
 
 @Entity //Categorizes Course as an entity
 @Table(name = "course") //Identifies which table is referenced
@@ -14,13 +18,16 @@ public class Course {
 	
 	@Id //Designates which variable is used as unique ID
 	@Column(name = "id") //Designates which column is represented by this variable
-	private int cId;
+	private Integer cId;
 	@Column(name = "name")
 	private String cName;
 	@Column(name = "instructor")
 	private String cInstructorName;
 	
-	
+	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY,
+	            cascade = CascadeType.ALL)
+	private List<StudentCourse> students = new ArrayList<>();
+		
 	public Course() {
 		setcId(1986);
 		setcName("Economics");
@@ -33,8 +40,11 @@ public class Course {
 		setcInstructorName(instructor);
 	}
 	
+	
 	//GSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSG
-	public int getcId() {
+	
+	
+	public Integer getcId() {
 		return cId;
 	}
 	public void setcId(int cId) {
@@ -57,28 +67,3 @@ public class Course {
 	
 
 }
-/*
-@Entity
-@Table(name="customers")
-public class Customer {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-	private Integer id;
-	
-	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<Order> orders;
-	
-
-	
-	@Column(name = "customer_name")
-	private String customerName;
-	
-	@Column(name = "contact_firstname")
-	private String contactFirstname;
-	
-	@Column(name = "credit_limit", columnDefinition="Decimal(10,2)")
-	private Double creditLimit;
-*/

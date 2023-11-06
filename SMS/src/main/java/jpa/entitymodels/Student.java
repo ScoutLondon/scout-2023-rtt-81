@@ -10,9 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-//TODO: One to many relationship
 
 
 
@@ -21,31 +23,40 @@ import javax.persistence.Table;
 public class Student {
 	
 	@Id //Designates which variable is used as unique ID
-	@Column(name = "email") //Designates which column is represented by this variable
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id") //Designates which column is represented by this variable
+	private Integer id;
+	@Column(name = "email") 
 	private String sEmail;
 	@Column(name = "name")
 	private String sName;
 	@Column(name = "password")
 	private String sPass;
 	
-	private List<Course> courses;
+	
+	  @OneToMany(mappedBy = "student", fetch = FetchType.LAZY,
+	            cascade = CascadeType.ALL)
+	private List<StudentCourse> courses = new ArrayList();
 
 	
 	public Student() {
 		setsEmail("Bueller@gmail.com");
 		setsName("Ferris Bueller");
 		setsPass("DayOff");
-		setCourses(new ArrayList<Course>());
+		setCourses(new ArrayList<StudentCourse>());
 	}
 	
 	public Student(String email, String name, String password) {
 		setsEmail(email);
 		setsName(name);
 		setsPass(password);
-		setCourses(new ArrayList<Course>());
+		setCourses(new ArrayList<StudentCourse>());
 	}
 	
+	
 	//GSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGSGGSGSGSGSGSGSGSGSGS
+	
+	
 	public String getsEmail() {
 		return sEmail;
 	}
@@ -70,39 +81,14 @@ public class Student {
 		this.sPass = sPass;
 	}
 
-	public List<Course> getCourses() {
+	public List<StudentCourse> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(List<StudentCourse> courses) {
 		this.courses = courses;
 	}
 	
 	
 
 }
-/*
-@Entity
-@Table(name="customers")
-public class Customer {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-	private Integer id;
-	
-	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<Order> orders;
-	
-
-	
-	@Column(name = "customer_name")
-	private String customerName;
-	
-	@Column(name = "contact_firstname")
-	private String contactFirstname;
-	
-	@Column(name = "credit_limit", columnDefinition="Decimal(10,2)")
-	private Double creditLimit;
-*/

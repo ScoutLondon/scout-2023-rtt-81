@@ -8,10 +8,10 @@ import jpa.entitymodels.Student;
 public interface StudentDAO {
 	
 	public List<Student> getAllStudents();
-	public Student getStudentByEmail();
-	public boolean validateStudent();
-	public void registerStudentToCourse();
-	public List<Course> getStudentCourses();
+	public Student getStudentByEmail(String sEmail);
+	public boolean validateStudent(String sEmail, String password);
+	public void registerStudentToCourse(String sEmail, int cId);
+	public List<Course> getStudentCourses(String sEmail);
 
 
 }
