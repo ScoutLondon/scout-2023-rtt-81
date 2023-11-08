@@ -27,7 +27,7 @@ public class StudentService implements StudentDAO {
 
 		List<Student> result = query.getResultList();
 		session.close();
-		factory.close();
+		
 		return result;
 	}
 
@@ -47,7 +47,7 @@ public class StudentService implements StudentDAO {
 			return null;
 		} finally {
 			session.close();
-			factory.close();
+			
 		}
 
 	}
@@ -70,7 +70,7 @@ public class StudentService implements StudentDAO {
 			return false;
 		} finally {
 			session.close();
-			factory.close();
+			
 		}
 
 	}
@@ -108,7 +108,7 @@ public class StudentService implements StudentDAO {
 			System.out.println("Successfully registered");
 		} finally {
 			session.close();
-			factory.close();
+			
 		}
 	}
 
@@ -129,7 +129,7 @@ public class StudentService implements StudentDAO {
 			return null;
 		} finally {
 			session.close();
-			factory.close();
+			
 		}
 
 	}

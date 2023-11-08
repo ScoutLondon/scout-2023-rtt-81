@@ -22,7 +22,6 @@ public class CourseService implements CourseDAO {
 
 		List<Course> result = query.getResultList();
 		session.close();
-		factory.close();
 		return result;
 	}
 
