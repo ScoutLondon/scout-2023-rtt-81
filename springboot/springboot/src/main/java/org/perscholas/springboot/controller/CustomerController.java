@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 // create an employee table with the following columns: id, first_name, last_name, department_name
 // create an entity and a dao for the employee table
 // create a controller for the employee table
@@ -51,6 +53,23 @@ public class CustomerController {
     public ModelAndView createCustomer() {
         ModelAndView response = new ModelAndView("customer/create");
         log.info("In create customer with no args");
+        return response;
+    }
+
+    @GetMapping("/customer/search")
+    public ModelAndView search(@RequestParam(required = false) String search) { //search is matching input name in search.jsp
+        ModelAndView response = new ModelAndView("customer/search");
+        log.debug("In the customer search controller method : firstName search parameter = " + search);
+
+        if(search != null){
+            List<Customer> customers = customerDao.findByFirstName(search);
+            response.addObject("customerVar", customers); //key/value pair, this key refers to jstl in search.jsp, this value refers to declared list
+            response.addObject("search", search);
+            for (Customer customer : customers){
+                log.debug("customer: id = " + customer.getId() + " last name = " + customer.getLastName());
+            }
+
+        }
         return response;
     }
 
