@@ -9,6 +9,11 @@
         <label for="search">First Name</label>
         <br>
         <input type="text" id="search" name="search" placeholder="Search by first name" value="${search}"/>
+        <br>
+        <label for="search2">Last Name</label>
+        <br>
+        <input type="text" id="search2" name="search2" placeholder="Search by last name" value="${search2}"/>
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

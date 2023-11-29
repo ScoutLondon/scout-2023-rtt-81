@@ -57,7 +57,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/search")
-    public ModelAndView search(@RequestParam(required = false) String search) { //search is matching input name in search.jsp
+    public ModelAndView search(@RequestParam(required = false) String search, @RequestParam(required = false) String search2) { //search is matching input name in search.jsp
         ModelAndView response = new ModelAndView("customer/search");
         log.debug("In the customer search controller method : firstName search parameter = " + search);
 
