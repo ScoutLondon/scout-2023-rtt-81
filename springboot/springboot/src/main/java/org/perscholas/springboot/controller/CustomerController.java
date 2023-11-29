@@ -59,7 +59,7 @@ public class CustomerController {
     @GetMapping("/customer/search")
     public ModelAndView search(@RequestParam(required = false) String search, @RequestParam(required = false) String search2) { //search is matching input name in search.jsp
         ModelAndView response = new ModelAndView("customer/search");
-        log.debug("In the customer search controller method : firstName search parameter = " + search);
+        log.debug("In the customer search controller method : firstName search= " + search + " lastName search= " +search2);
 
         if((search != null) || (search2 != null)){
             List<Customer> customers = customerDao.findByFirstNameOrLastName(search, search2);
