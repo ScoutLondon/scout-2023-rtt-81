@@ -61,12 +61,13 @@ public class CustomerController {
         ModelAndView response = new ModelAndView("customer/search");
         log.debug("In the customer search controller method : firstName search parameter = " + search);
 
-        if(search != null){
-            List<Customer> customers = customerDao.findByFirstName(search);
+        if((search != null) || (search2 != null)){
+            List<Customer> customers = customerDao.findByFirstNameOrLastName(search, search2);
             response.addObject("customerVar", customers); //key/value pair, this key refers to jstl in search.jsp, this value refers to declared list
             response.addObject("search", search);
+            response.addObject("search2" , search2);
             for (Customer customer : customers){
-                log.debug("customer: id = " + customer.getId() + " last name = " + customer.getLastName());
+                log.debug("customer: id = " + customer.getId() + " first name = " + customer.getFirstName() + " last name = " + customer.getLastName());
             }
 
         }

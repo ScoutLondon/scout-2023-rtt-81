@@ -11,6 +11,6 @@ import java.util.List;
 public interface CustomerDAO extends JpaRepository<Customer, Long> {
     public Customer findById(int id);
 
-    @Query("SELECT c from Customer c WHERE c.firstName = :firstName")
-    List<Customer> findByFirstName(String firstName);
+    @Query("SELECT c from Customer c WHERE c.firstName = :firstName OR c.lastName = :lastName")
+    List<Customer> findByFirstNameOrLastName(String firstName, String lastName);
 }
