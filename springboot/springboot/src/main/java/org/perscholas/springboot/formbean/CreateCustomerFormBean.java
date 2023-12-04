@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class CreateCustomerFormBean {
 
+    private Integer id;
+
     private String firstName;
     private String lastName;
     private String phone;

@@ -28,6 +28,7 @@
                 <td>First Name</td>
                 <td>Last Name</td>
                 <td>Department</td>
+                <td>Edit</td>
             </tr>
             <c:forEach items="${employeeVar}" var="employee">
                 <tr>
@@ -35,6 +36,7 @@
                     <td>${employee.firstName}</td>
                     <td>${employee.lastName}</td>
                     <td>${employee.department}</td>
+                    <td><a href="/employee/edit/${employee.id}">Edit</a></td>
                 </tr>
             </c:forEach>
 

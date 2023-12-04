@@ -6,9 +6,11 @@ import org.perscholas.springboot.database.entity.Customer;
 import org.perscholas.springboot.database.entity.Employee;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
 import org.perscholas.springboot.formbean.CreateEmployeeFormBean;
+import org.perscholas.springboot.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +21,8 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeDAO employeeDao;
+    @Autowired
+    private EmployeeService employeeService;
 
     @GetMapping("/employee/create")
     public ModelAndView createEmployee() {
@@ -31,16 +35,7 @@ public class EmployeeController {
     public ModelAndView createCustomerSubmit(CreateEmployeeFormBean form){
         ModelAndView response = new ModelAndView("employee/create");
 
-        System.out.println("firstName: " + form.getFirstName());
-        System.out.println("lastName: " + form.getLastName());
-        System.out.println("department: " + form.getDepartment());
-
-        Employee employee = new Employee();
-        employee.setFirstName(form.getFirstName());
-        employee.setLastName(form.getLastName());
-        employee.setDepartment(form.getDepartment());
-
-        employeeDao.save(employee);
+        employeeService.createEmployee(form);
 
         log.info("In create employee with incoming args");
         return response;
@@ -61,6 +56,28 @@ public class EmployeeController {
             }
 
         }
+        return response;
+    }
+
+    @GetMapping("/employee/edit/{id}")
+    public ModelAndView editEmployee(@PathVariable int id){
+        ModelAndView response = new ModelAndView("employee/create");
+
+        Employee employee = employeeDao.findById(id);
+
+        CreateEmployeeFormBean form = new CreateEmployeeFormBean();
+
+        if ( employee != null) {
+            form.setId(employee.getId());
+            form.setFirstName(employee.getFirstName());
+            form.setLastName(employee.getLastName());
+            form.setDepartment(employee.getDepartment());
+        } else {
+            log.warn("Employee with id " + id + " was not found");
+        }
+
+        response.addObject("form", form);
+
         return response;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
-    public Employee findById(int id);
+    public Employee findById(Integer id);
 
     @Query("SELECT c from Employee c WHERE " +
             "(LOWER(c.firstName) = LOWER(:firstName)) OR " +
