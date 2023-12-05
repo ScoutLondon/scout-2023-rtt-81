@@ -16,7 +16,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeDAO employeeDao;
 
-    public void createEmployee(CreateEmployeeFormBean form){
+    public Employee createEmployee(CreateEmployeeFormBean form){
         log.debug("id: " + form.getId());
         log.debug("firstName: " + form.getFirstName());
         log.info("lastName: " + form.getLastName());
@@ -32,6 +32,6 @@ public class EmployeeService {
         employee.setLastName(form.getLastName());
         employee.setDepartment(form.getDepartment());
 
-        employeeDao.save(employee);
+        return employeeDao.save(employee);
     }
 }

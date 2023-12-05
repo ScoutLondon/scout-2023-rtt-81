@@ -3,12 +3,12 @@ package org.perscholas.springboot.database.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-//@Entity
 @Getter
-//@Setter
-//@Table(name = "user")
+@Setter
+@Entity
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -16,4 +16,8 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
+    private String password;
+
 }
