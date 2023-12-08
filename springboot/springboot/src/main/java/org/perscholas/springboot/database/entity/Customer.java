@@ -27,4 +27,7 @@ public class Customer
     @Column(name = "city")
     private String city;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
 }
