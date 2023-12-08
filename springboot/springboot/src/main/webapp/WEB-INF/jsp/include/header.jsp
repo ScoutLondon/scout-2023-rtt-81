@@ -45,10 +45,10 @@
 
                 <sec:authorize access="hasAnyAuthority('ADMIN')">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Admin</a>
+                        <a class="nav-link" href="/admin/index">Admin</a>
                     </li>
                 </sec:authorize>
-                
+
                 <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/logout">Logout</a>
