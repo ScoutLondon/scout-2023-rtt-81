@@ -58,6 +58,12 @@
                 </li>
                 </sec:authorize>
 
+                <!--This is bad practice to let users see/click things they cannot access
+                but putting it here to show example of that error-->
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/index">Secured Request</a>
+                </li>
+
             </ul>
         </div>
     </div>
