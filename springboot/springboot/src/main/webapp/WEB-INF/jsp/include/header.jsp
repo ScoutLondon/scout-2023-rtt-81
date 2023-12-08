@@ -33,6 +33,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/employee/search">Search Employee</a>
                 </li>
+                <sec:authorize access="!isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/register">User Registration</a>
                 </li>
@@ -41,6 +42,7 @@
                         <a class="nav-link" href="">Admin</a>
                     </li>
                 </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/logout">Logout</a>
                 </li>
