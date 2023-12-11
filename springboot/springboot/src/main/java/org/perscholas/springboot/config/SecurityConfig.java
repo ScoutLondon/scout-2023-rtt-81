@@ -27,6 +27,8 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable());
 
         //determines which requests are authenticated
+        //any part of your application that requires you to know who is logged in to take some action
+        //must be listed here and have its own controller to handle those requests
         http.authorizeRequests()
                 .requestMatchers(
                         new AntPathRequestMatcher("/admin/**"),
