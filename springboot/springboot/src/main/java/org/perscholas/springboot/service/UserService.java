@@ -39,6 +39,7 @@ public class UserService {
         log.debug("Encoded password: " + encoded);
         user.setPassword(encoded);
 
+        //This will create a date in database with the current time (time of execution)
        user.setCreateDate(new Date());
 
         return userDao.save(user);

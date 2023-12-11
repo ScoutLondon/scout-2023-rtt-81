@@ -24,6 +24,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    //must ALWAYS use java.util.Date, NEVER java.sql.Date
+    //when working with dates, ALWAYS use a timestamp column in database
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     public Date createDate;
