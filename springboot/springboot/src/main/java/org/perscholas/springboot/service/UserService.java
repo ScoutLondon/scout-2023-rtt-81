@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.sql.Timestamp;
+
 @Slf4j
 @Service
 public class UserService {
@@ -20,6 +23,13 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    //1) Alter the user table, add a column called create_date of time timestamp
+    //2) Update the user entity and add the create_date field
+    //3) Google how to use a @Temporal to define the create_date field as a timestamp
+    //4) In the createNewUser function set the create_date field to the current date and time before saving to the database
+
+
+
     public User createNewUser(RegisterUserFormBean form){
         User user = new User();
 
@@ -28,6 +38,8 @@ public class UserService {
         String encoded = passwordEncoder.encode(form.getPassword());
         log.debug("Encoded password: " + encoded);
         user.setPassword(encoded);
+
+       user.setCreateDate(new Date());
 
         return userDao.save(user);
     }
