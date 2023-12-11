@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.CustomerDAO;
 import org.perscholas.springboot.database.entity.Customer;
+import org.perscholas.springboot.database.entity.User;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
+import org.perscholas.springboot.security.AuthenticatedUserService;
 import org.perscholas.springboot.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
 
 
 
@@ -110,6 +115,24 @@ public class CustomerController {
         response.addObject("form", form);
 
         return response;
+    }
+
+    @GetMapping("/customer/MyCustomers")
+    public void myCustomers(){
+        log.info("################# In my customers #############");
+
+        //1) Use the authenticated user service to find the logged in user
+        User user = authenticatedUserService.loadCurrentUser();
+
+        // 2) Create a DAO method that will find by userId
+
+        // 3) use the authenticated user id to find a list of all customers created by this user
+        List<Customer> customers = customerDao.findByUserId(user.getId());
+
+        // 4) loop over the customers created and log.debug the customer id and customer last name
+        for(Customer customer : customers){
+            log.debug("First Name = " + customer.getFirstName() + " Last name = " + customer.getLastName() + " Id = " +customer.getId());
+        }
     }
 
 

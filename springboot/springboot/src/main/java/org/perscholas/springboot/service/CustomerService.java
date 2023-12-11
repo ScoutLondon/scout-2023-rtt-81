@@ -37,7 +37,7 @@ public class CustomerService {
 
             //this line of code loads the current logged in user record from the database
             User user = authenticatedUserService.loadCurrentUser();
-            
+
             //then we can set the user id onto the customer record we are about to create
             //I am doing here because I only want to update the userid on the customer when it is being created
             customer.setUserId(user.getId());
