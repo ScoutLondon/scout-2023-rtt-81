@@ -135,6 +135,23 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/customer/detail")
+    public ModelAndView detail(@RequestParam Integer id){
+        ModelAndView response = new ModelAndView("customer/detail");
+
+        Customer customer = customerDao.findById(id);
+
+        if (customer == null){
+            log.warn("Customer with id " + id + " was not found");
+            response.setViewName("redirect:/error/404");
+            return response;
+        }
+        response.addObject("customer", customer);
+
+        return response;
+
+    }
+
 
     //    @GetMapping("/customer/create") //this customer create shows up in URL
 //    public ModelAndView createCustomer(@RequestParam(required = false) String firstName,
