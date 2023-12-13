@@ -100,6 +100,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/edit/{id}")
+    //use this for edit/id/x vs edit?id=x
     public ModelAndView editCustomer(@PathVariable int id){
         ModelAndView response = new ModelAndView("customer/create");
 
@@ -159,16 +160,20 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/fileupload")
-    public ModelAndView fileUpload() {
+    //use this for customer/fileupload?id=x urls as opposed to customer/fileupload/x
+    public ModelAndView fileUpload(@RequestParam Integer id) {
         ModelAndView response = new ModelAndView("customer/fileupload");
+
+        Customer customer = customerDao.findById(id);
+        response.addObject("customer", customer);
 
         log.info(" In fileupload with no Args");
         return response;
     }
 
     @PostMapping("/customer/fileUploadSubmit")
-    public ModelAndView fileUploadSubmit(@RequestParam("file") MultipartFile file) {
-        ModelAndView response = new ModelAndView("customer/fileupload");
+    public ModelAndView fileUploadSubmit(@RequestParam("file") MultipartFile file, @RequestParam Integer id) {
+        ModelAndView response = new ModelAndView("redirect:/customer/detail?id="+id);
 
         log.info("Filename = " + file.getOriginalFilename());
         log.info("Size     = " + file.getSize());
@@ -184,6 +189,12 @@ public class CustomerController {
 
             e.printStackTrace();
         }
+
+        //these 3 lines of code will load customer by id passed in
+        //update the image url field and then save the customer to the database
+        Customer customer = customerDao.findById(id);
+        customer.setImageUrl("/pub/images/" + file.getOriginalFilename());
+        customerDao.save(customer);
 
         return response;
     }

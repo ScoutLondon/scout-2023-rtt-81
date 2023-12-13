@@ -43,8 +43,10 @@
                     <td>${customer.city}</td>
                     <td><img src="${customer.imageUrl}" style="max-width:100px"></td>
                     <td><a href="/customer/detail?id=${customer.id}">Detail</a></td>
+                    <!-- path parameter -->
                     <td><a href="/customer/edit/${customer.id}">Edit</a></td>
-                    <td><a href="/customer/fileupload/${customer.id}">Upload</a></td>
+                    <!-- request parameter -->
+                    <td><a href="/customer/fileupload?id=${customer.id}">Upload</a></td>
                 </tr>
             </c:forEach>
 
