@@ -40,7 +40,10 @@ public class CustomerService {
 
             //then we can set the user id onto the customer record we are about to create
             //I am doing here because I only want to update the userid on the customer when it is being created
-            customer.setUserId(user.getId());
+
+            //this line gets commented out because we established a one-to-many relationship in user and customer entities
+            //customer.setUserId(user.getId());
+            customer.setUser(user);
         }
 
         customer.setFirstName(form.getFirstName());

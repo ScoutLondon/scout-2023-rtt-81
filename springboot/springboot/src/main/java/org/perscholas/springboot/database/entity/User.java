@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -29,5 +30,9 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     public Date createDate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Customer> customers;
 
 }
